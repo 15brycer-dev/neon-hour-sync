@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 10 45% 6%;
+    --foreground: 36 45% 93%;
+    --card: 9 33% 11%;
+    --card-foreground: 36 45% 93%;
+    --popover: 10 42% 8%;
+    --popover-foreground: 36 45% 93%;
+    --primary: 352 100% 62%;
+    --primary-foreground: 10 45% 6%;
+    --secondary: 8 26% 17%;
+    --secondary-foreground: 36 45% 93%;
+    --muted: 8 26% 17%;
+    --muted-foreground: 15 20% 68%;
+    --accent: 8 26% 17%;
+    --accent-foreground: 36 45% 93%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 36 45% 93%;
+    --border: 8 30% 20%;
+    --input: 8 30% 20%;
+    --ring: 352 100% 62%;
+    --chart-1: 352 100% 62%;
+    --chart-2: 46 100% 50%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+    --stage: 10 45% 6%;
+    --surface: 9 33% 11%;
+    --neon: 352 100% 62%;
+    --neon-foreground: 10 45% 6%;
+    --amber: 46 100% 50%;
+    --amber-foreground: 10 45% 6%;
+    --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Alfa Slab One', ui-serif, Georgia, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --sidebar-background: 10 45% 6%;
+    --sidebar-foreground: 36 45% 93%;
+    --sidebar-primary: 352 100% 62%;
+    --sidebar-primary-foreground: 10 45% 6%;
+    --sidebar-accent: 8 26% 17%;
+    --sidebar-accent-foreground: 36 45% 93%;
+    --sidebar-border: 8 30% 20%;
+    --sidebar-ring: 352 100% 62%;
+  }
+
+  .dark {
+    --background: 10 45% 6%;
+    --foreground: 36 45% 93%;
+    --card: 9 33% 11%;
+    --card-foreground: 36 45% 93%;
+    --popover: 10 42% 8%;
+    --popover-foreground: 36 45% 93%;
+    --primary: 352 100% 62%;
+    --primary-foreground: 10 45% 6%;
+    --secondary: 8 26% 17%;
+    --secondary-foreground: 36 45% 93%;
+    --muted: 8 26% 17%;
+    --muted-foreground: 15 20% 68%;
+    --accent: 8 26% 17%;
+    --accent-foreground: 36 45% 93%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 36 45% 93%;
+    --border: 8 30% 20%;
+    --input: 8 30% 20%;
+    --ring: 352 100% 62%;
+    --chart-1: 352 100% 62%;
+    --chart-2: 46 100% 50%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+    --stage: 10 45% 6%;
+    --surface: 9 33% 11%;
+    --neon: 352 100% 62%;
+    --neon-foreground: 10 45% 6%;
+    --amber: 46 100% 50%;
+    --amber-foreground: 10 45% 6%;
+    --sidebar-background: 10 45% 6%;
+    --sidebar-foreground: 36 45% 93%;
+    --sidebar-primary: 352 100% 62%;
+    --sidebar-primary-foreground: 10 45% 6%;
+    --sidebar-accent: 8 26% 17%;
+    --sidebar-accent-foreground: 36 45% 93%;
+    --sidebar-border: 8 30% 20%;
+    --sidebar-ring: 352 100% 62%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+}
+
+/* Neon bar-sign flicker: mostly steady with occasional dips, like a real tube */
+@keyframes neon-flicker {
+  0%, 86%, 92%, 96%, 100% { opacity: 1; }
+  88% { opacity: 0.65; }
+  90% { opacity: 0.9; }
+  94% { opacity: 0.75; }
+}
+
+.neon-flicker {
+  animation: neon-flicker 5s linear infinite;
+}
+
+/* Channel-letter headers: hot red tube glow with an electric buzz */
+.neon-header {
+  color: hsl(var(--neon));
+  text-shadow: 0 0 6px rgba(255, 59, 78, 0.8), 0 0 18px rgba(255, 59, 78, 0.45), 0 0 42px rgba(255, 59, 78, 0.3);
+  animation: neon-buzz 4s linear infinite;
+}
+
+/* Zap pulse when the DRINK! sign slams on */
+@keyframes zap {
+  0% { filter: brightness(1); }
+  12% { filter: brightness(1.8); }
+  24% { filter: brightness(0.6); }
+  36% { filter: brightness(1.45); }
+  100% { filter: brightness(1); }
+}
+.animate-zap {
+  animation: zap 0.5s ease-out;
+}
+
+@keyframes neon-buzz {
+  0%, 88%, 100% { opacity: 1; }
+  89% { opacity: 0.55; }
+  90% { opacity: 0.95; }
+  94% { opacity: 0.7; }
+  95% { opacity: 1; }
+}
+
+/* Spinning vinyl record */
+@keyframes vinyl-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-vinyl-spin {
+  animation: vinyl-spin 3.4s linear infinite;
+}
+.vinyl-disc {
+  background: repeating-radial-gradient(circle at 50% 50%, #120b0b 0px, #221313 1.5px, #0c0606 3px);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.8), 0 0 18px rgba(0, 0, 0, 0.6);
+}
+.vinyl-sheen {
+  background: conic-gradient(
+    from 220deg,
+    rgba(255, 255, 255, 0.16) 0deg,
+    transparent 30deg,
+    transparent 160deg,
+    rgba(255, 255, 255, 0.07) 190deg,
+    transparent 240deg,
+    transparent 340deg,
+    rgba(255, 255, 255, 0.1) 360deg
+  );
+}
